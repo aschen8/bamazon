@@ -1,3 +1,24 @@
+/requiring mysql
+//got this from https://www.w3schools.com/nodejs/nodejs_mysql_create_table.asp
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "admin",
+  password: "password",
+  database: "bamazondb"
+});
+
+con.connect(function(err){
+  if (err) throw err;
+  console.log("Connected!");
+  var sql = "CREATE TABLE products (category VARCHAR(50), productName VARCHAR(50), price DECIMAL(6,2), inventory INT)";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("table created");
+  });
+});
+
+
 //creating a new object named "newOrder"
 //with variables customerName, productName, and quantity
 var newOrder = {
@@ -59,10 +80,6 @@ newOrder = {
 // "INSERT INTO tbl_name (a,b,c) VALUES('Jake', 'Baseball', 1)"
 
 var sql = "INSERT INTO orders (customerName, productName, quantity) VALUES(" + newOrder.customerName + ", " newOrder.productName + ", " + newOrder.quantity + ")"
-
-
-
-
 
 
 
