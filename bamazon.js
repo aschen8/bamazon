@@ -1,7 +1,9 @@
 /requiring mysql
 //got this from https://www.w3schools.com/nodejs/nodejs_mysql_create_table.asp
 var mysql = require('mysql');
-var con = mysql.createConnection({
+var prompt = require('prompt');
+
+var connection = mysql.createConnection({
   host: "localhost",
   user: "admin",
   password: "password",
